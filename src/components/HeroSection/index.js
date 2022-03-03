@@ -38,7 +38,7 @@ const HeroSection = () => {
             primary="true"
             dark="true"
           >
-            בואו נתחיל {hover ? <ArrowForward /> : <ArrowRight />}
+            {hover ? <ArrowForward /> : <ArrowRight />} בואו נתחיל
           </Button>
         </HeroBtnWrapper>
       </HeroContent>
