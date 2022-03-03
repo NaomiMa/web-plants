@@ -43,19 +43,18 @@ margin-top: 10px;
 `;
 
 export const MobileIcon = styled.div`
-display: none;
+  display: none;
 
-@media screen and (max-width: 768px){
-color: #fff;
-display: block;
-position: absolute;
-top:0;
-right:0;
-transform: translate (-100%, 60%);
-fone-size: 1.8rem;
-cursor: pointer;
-
-}
+  @media screen and (max-width: 768px) {
+    color: #fff;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate (-100%, 60%);
+    fone-size: 1.8rem;
+    cursor: pointer;
+  }
 `;
 export const NavMenu = styled.ul`
   display: flex;
