@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Footer from '../components/Footer'
 import HeroSection from '../components/HeroSection'
 
 import Navbar from '../components/Navbar'
@@ -18,6 +19,7 @@ const Home = () => {
           <Navbar toggle={toggle} />
           <HeroSection />
           <Plants />
+          <Footer/>
       </>
   )
 }
