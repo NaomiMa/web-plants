@@ -4,18 +4,18 @@ import { Link as LinkS } from "react-scroll";
 
 export const Nav = styled.nav`
   background: #000;
-  height: 80px;
-  // margin-top: -80px;
+  height: 50px;
+  margin-top: -60px;
   display: flex;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   font-size: 1rem;
   position: sticky;
   top: 0;
   z-index: 10;
 
   @media screen and (maxwidth: 960px) {
-    transition: 0.8s all EastRounded;
+    transition: 0.8s all ease;
   }
 `;
 export const NavbarContainer = styled.div`

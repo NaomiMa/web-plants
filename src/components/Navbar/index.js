@@ -1,39 +1,57 @@
-import React from "react";
-import {FaBars} from 'react-icons/fa'
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavBtnLink, NavBtn } from "./NavbarElements";
+import React, { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
+import {
+  Nav,
+  NavbarContainer,
+  NavLogo,
+  MobileIcon,
+  NavMenu,
+  NavItem,
+  NavLinks,
+  NavBtnLink,
+  NavBtn,
+} from "./NavbarElements";
+import { animateScroll as scroll } from "react-scroll";
+
+
 
 const Navbar = ({ toggle }) => {
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
   return (
     <>
       <Nav>
         <NavbarContainer>
-                  <NavLogo to="/">MyPlant</NavLogo>
-                  <MobileIcon onClick={toggle}>
-                      <FaBars />
-                  </MobileIcon>
-                  <NavMenu>
-                      <NavItem>
-                          <NavLinks to = "home">Home</NavLinks>
-                      </NavItem>
-                      <NavItem>
-                          <NavLinks to = "questionnaire">שאלון התאמה לצמח</NavLinks>
-                      </NavItem>
-                      <NavItem>
-                          <NavLinks to = "forum">פורום ייעוץ ושיתוף</NavLinks>
-                      </NavItem>
-                      <NavItem>
-                          <NavLinks to = "plants">הצמחים שלנו</NavLinks>
-                      </NavItem>
-                      <NavItem>
-                          <NavLinks to = "news">חדשות ועדכונים</NavLinks>
-                      </NavItem>
-                      <NavItem>
-                          <NavLinks to = "signup">Sign Up</NavLinks>
-                      </NavItem>
-                      <NavBtn>
-                          <NavBtnLink to = "/signin">Sign In</NavBtnLink>
-                      </NavBtn>
-                  </NavMenu>
+          <NavLogo to="/" onClick={toggleHome}>
+            MyPlant
+          </NavLogo>
+          <MobileIcon onClick={toggle}>
+            <FaBars />
+          </MobileIcon>
+          <NavMenu>
+            <NavItem>
+              <NavLinks to="home">Home</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="questionnaire">שאלון התאמה לצמח</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="forum">פורום ייעוץ ושיתוף</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="plants">הצמחים שלנו</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="news">חדשות ועדכונים</NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks to="signup">Sign Up</NavLinks>
+            </NavItem>
+            <NavBtn>
+              <NavBtnLink to="/signin">Sign In</NavBtnLink>
+            </NavBtn>
+          </NavMenu>
         </NavbarContainer>
       </Nav>
     </>
@@ -41,13 +59,3 @@ const Navbar = ({ toggle }) => {
 };
 
 export default Navbar;
-
-// const Navbar = () => {
-//   return (
-//       <div>
-//           <h1>My Plants</h1>
-//     </div>
-//   )
-// }
-
-// export default Navbar
