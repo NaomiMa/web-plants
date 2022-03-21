@@ -13,8 +13,6 @@ import {
 } from "./NavbarElements";
 import { animateScroll as scroll } from "react-scroll";
 
-
-
 const Navbar = ({ toggle }) => {
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -31,16 +29,36 @@ const Navbar = ({ toggle }) => {
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks to="home">Home</NavLinks>
+              <NavLinks
+                to="home"
+               
+              >
+                Home
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="questionnaire">שאלון התאמה לצמח</NavLinks>
+              <NavLinks
+                to="questionnaire"
+               
+              >
+                שאלון התאמה לצמח
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="forum">פורום ייעוץ ושיתוף</NavLinks>
+              <NavLinks
+                to="forum"
+              
+              >
+                פורום ייעוץ ושיתוף
+              </NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks to="plants">הצמחים שלנו</NavLinks>
+              <NavLinks
+                to="plants"
+              
+              >
+                הצמחים שלנו
+              </NavLinks>
             </NavItem>
             <NavItem>
               <NavLinks to="news">חדשות ועדכונים</NavLinks>
