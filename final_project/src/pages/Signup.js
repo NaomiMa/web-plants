@@ -9,11 +9,18 @@ import Button from "@mui/material/Button";
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   const { error, signup } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(email, password);
+    if(password == confirmPassword){
+      signup(email, password, phoneNumber)
+    }
+    else console.log('סיסמא לא תואמת')
   };
 
   return (
@@ -59,9 +66,26 @@ export default function Signup() {
                 value={password}
               />
             </label>
+            <label>
+              <br />
+              <Typography variant="h6" gutterBottom component="div">
+                confirm password:
+              </Typography>
+              <span></span>
+              <TextField
+                required
+                id="outlined-password-input"
+                label="confirm-password"
+                type="password"
+                autoComplete="current-password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
+              />
+            </label>
             <br /> <br />
             {/* לבדוק למה הכפתור לא מתקשר */}
             {/* <Button variant="outlined">Sign up</Button> */}
+
             <button>sign up</button>
             {error && <p> {error} </p>}
           </form>
