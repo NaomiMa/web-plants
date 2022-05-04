@@ -18,7 +18,7 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(password == confirmPassword){
-      signup(email, password, phoneNumber)
+      signup(email, password)
     }
     else console.log('סיסמא לא תואמת')
   };
