@@ -18,8 +18,8 @@ function intersection(a, b) {
 
 export default function TransferList() {
   const [checked, setChecked] = React.useState([]);
-  const [left, setLeft] = React.useState([0, 1, 2, 3]);
-  const [right, setRight] = React.useState([4, 5, 6, 7]);
+  const [left, setLeft] = React.useState([0, 1, 2,3, 4, 5, 6, 7 ]);
+  const [right, setRight] = React.useState([]);
 
   const leftChecked = intersection(checked, left);
   const rightChecked = intersection(checked, right);
@@ -93,11 +93,11 @@ export default function TransferList() {
   );
 
   return (
-    <Grid container spacing={2} justifyContent="center" alignItems="center">
+    <Grid container spacing={2} justifyContent="left" alignItems="center">
       <Grid item>{customList(left)}</Grid>
       <Grid item>
         <Grid container direction="column" alignItems="center">
-          <Button
+          {/* <Button
             sx={{ my: 0.5 }}
             variant="outlined"
             size="small"
@@ -106,7 +106,7 @@ export default function TransferList() {
             aria-label="move all right"
           >
             ≫
-          </Button>
+          </Button> */}
           <Button
             sx={{ my: 0.5 }}
             variant="outlined"

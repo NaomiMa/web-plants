@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -20,10 +22,14 @@ const db = getFirestore();
 //init firebase auth
 const auth = getAuth();
 
+//init firebase storage
+const storage = getStorage()
+
 // collection ref
 const colRef = collection(db, "plants");
+const ref = collection(db, "posts");
 
-export { db, auth };
+export { db, auth, storage };
 
 // get collection data
 getDocs(colRef)
