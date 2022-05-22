@@ -18,6 +18,7 @@ export default function Login() {
 
   return (
     <div className="auth-form">
+      <Container>
         <h2>login</h2>
         <form onSubmit={handleSubmit}>
           <label>
@@ -50,7 +51,8 @@ export default function Login() {
               value={password}
             />
         </label>
-        <br/>
+        <br/>        <br/>
+
  
           {/* לבדוק למה הכפתור לא מתקשר */}
           {/* <Button variant="outlined">Sign up</Button> */}
@@ -59,6 +61,7 @@ export default function Login() {
           {error && <div className='error'>{ error }</div>}
 
         </form>
+      </Container>
     </div>
   );
 }

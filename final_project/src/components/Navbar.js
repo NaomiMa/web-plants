@@ -4,12 +4,14 @@ import Button from "@mui/material/Button";
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useLogout } from "../hook/useLogout";
+import { useAuthContext } from "../hook/useAuthContext";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const {logout, isPending} = useLogout()
+  const { logout, isPending } = useLogout();
+  const { user } = useAuthContext();
+
   return (
-   
     <div className="navbar">
       <Container maxWidth="x1">
         <ul>
@@ -21,24 +23,66 @@ export default function Navbar() {
             <Link to="/">Home</Link>
           </Button>
 
-          <Button>
-            <Link to="/login">Login</Link>
-          </Button>
-          <Button>
-            <Link to="/signup">Signup</Link>
-          </Button>
+          {!user && (
+            <>
+              <Button>
+                <Link to="/login">Login</Link>
+              </Button>
+              <Button>
+                <Link to="/signup">Signup</Link>
+              </Button>
+            </>
+          )}
           <Button>
             <Link to="/plants">Plants</Link>
           </Button>
           <Button>
             <Link to="/forum">Forum</Link>
           </Button>
-          {!isPending && <Button className="btn" variant="outlined" onClick={logout && Navigate}>LOGOUT</Button>}
-          {isPending && <Button className="btn" variant="outlined" disabled>Logout</Button>}
-
+          {user && (
+            <>
+              {!isPending && (
+                <Button className="btn" variant="outlined" onClick={logout}>
+                  LOGOUT
+                </Button>
+              )}
+              {isPending && (
+                <Button className="btn" variant="outlined" disabled>
+                  Logout
+                </Button>
+              )}
+            </>
+          )}
         </ul>
       </Container>
-      </div>
-   
+    </div>
+
+    //  export default function Navbar() {
+    //    const { logout, isPending } = useLogout()
+    //    const { user } = useAuthContext()
+
+    //    return (
+    //      <nav className="navbar">
+    //        <ul>
+    //          <li className="logo">
+    //            <img src={Temple} alt="dojo logo" />
+    //            <span>The Dojo</span>
+    //          </li>
+
+    //            <>
+    //              <li><Link to="/login">Login</Link></li>
+    //              <li><Link to="/signup">Signup</Link></li>
+    //            </>
+
+    //          {user && (
+    //            <li>
+    //              {!isPending && <button className="btn" onClick={logout}>Logout</button>}
+    //              {isPending && <button className="btn" disabled>Logging out...</button>}
+    //            </li>
+
+    //        </ul>
+    //      </nav>
+    //    )
+    //  }
   );
 }

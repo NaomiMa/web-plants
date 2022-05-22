@@ -1,4 +1,6 @@
 import Card from "@mui/material/Card";
+import Grid from '@mui/material/Grid';
+
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -12,6 +14,8 @@ import Avatar from "./Avatar.js";
 import React from "react";
 import { Container } from "@mui/material";
 import { useAuthContext } from "../hook/useAuthContext";
+import OnlineUsers from "./OnlineUsers.js";
+import Create from "../pages/Create.js";
 
 export default function ForumCard() {
   const auth = getAuth();
@@ -22,11 +26,12 @@ export default function ForumCard() {
  
 
   return (
-    <Container>
-      <Card>
-        
-      </Card>
-      <Card>
+    <div>
+      <Container>
+        <Grid container spacing={8}>
+          <Grid item xs={3} >
+          <Card>
+            
         <CardHeader
           avatar={
             <Avatar src={user.photoURL}>
@@ -41,7 +46,18 @@ export default function ForumCard() {
             האם מישהו עשה ״קיר צמחיה״ או הסתרה משכנים עם צמחים מטפסים?
           </Typography>
         </CardContent>
-      </Card>
-    </Container>
+       
+          </Card>
+        </Grid>
+     <Grid container justifyContent="center">
+            <Create />
+        </Grid>
+        <Grid container justifyContent="end"  >
+          <OnlineUsers />
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
+    
   );
 }

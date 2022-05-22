@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
-
+import {
+  getFirestore,serverTimestamp
+} from "firebase/firestore";
+import { getStorage,  } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -23,60 +24,10 @@ const db = getFirestore();
 const auth = getAuth();
 
 //init firebase storage
-const storage = getStorage()
+const storage = getStorage();
 
-// collection ref
-const colRef = collection(db, "plants");
-const ref = collection(db, "posts");
+// timestamp
+// const timestamp = Timestamp();
 
 export { db, auth, storage };
 
-// get collection data
-getDocs(colRef)
-  .then((snapshot) => {
-    // console.log(snapshot.docs)
-    let plants = [];
-    snapshot.docs.forEach((doc) => {
-      plants.push({ ...doc.data(), id: doc.id });
-    });
-    console.log(plants);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
-
-
-
-//   // adding documents
-//   const addPlantsForm = document.querySelector('.add')
-// addPlantsForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-
-//     addDoc(colRef, {
-//         name: addPlantsForm.name.value,
-//         description: addPlantsForm.description.value,
-//         treatment: addPlantsForm.treatment.value,
-//         tips: addPlantsForm.tips.value,
-//         tag: addPlantsForm.irrigtion.value,
-//         tag: addPlantsForm.location.value,
-//         tag: addPlantsForm.season.value,
-//         tag: addPlantsForm.uses.value,
-//         lighting: addPlantsForm.lighting.value,
-//       })
-//       .then(() => {
-//         addPlantsForm.reset()
-//       })
-// })
-
-// // deleting documents
-// const deletePlantsForm = document.querySelector('.delete')
-// deletePlantsForm.addEventListener('submit', (e) => {
-//     e.preventDefault()
-
-//     const docRef = doc(db, 'Plants', deletePlantsForm.id.value)
-
-//     deleteDoc(docRef)
-//       .then(() => {
-//         deletePlantsForm.reset()
-//       }) 
-// })

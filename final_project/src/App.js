@@ -7,28 +7,41 @@ import Plants from "./pages/Plants";
 import Signup from "./pages/Signup";
 import { useLogout } from "./hook/useLogout";
 import { useAuthContext } from "./hook/useAuthContext";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
-  // const [authIsReady] = useAuthContext()
-  
+  const { authIsReady, user } = useAuthContext();
+
   return (
     <div className="App">
       <header className="App-header">
-        
-        <BrowserRouter>
-          <Navbar />
+        {authIsReady && (
+          <BrowserRouter>
+            <Navbar />
 
-          <Routes>
-            <Route path="/" element={<Plants />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/logout" element={<useLogout /> } />
-            <Route path="/plants" element={<Plants />} />
-              <Route path="/forum" element={<ForumCard />} />
-              {/* <Route path="/logout" element={  authIsReady ? <Navigate to = "/forum" /> : <Navigate to = "/login" />} />      */}
-          </Routes>
-          <AddPost />
+            <Routes>
+              <Route path="/" element={<Plants />} />
+              <Route
+                path="/login"
+                element={user ? <Navigate to="/" /> : <Login />}
+              />
+              <Route
+                path="/signup"
+                element={user ? <Navigate to="/" /> : <Signup />}
+              />
+              <Route
+                path="/logout"
+                element={user ? <useLogout /> : <Navigate to="/login" />}
+              />
+              <Route path="/plants" element={<Plants />} />
+              <Route
+                path="/forum"
+                element={user ? <ForumCard /> : <Navigate to="/login" />}
+              />
+            </Routes>
+            <AddPost />
           </BrowserRouter>
+        )}
       </header>
     </div>
   );

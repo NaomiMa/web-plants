@@ -59,6 +59,7 @@ export default function PlantForm() {
         <br />
         <button>הוספה</button>
       </form>
+      
     </Container>
   );
 }
