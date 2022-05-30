@@ -61,11 +61,12 @@ export default function Create() {
       photoURL: user.photoURL,
       id: user.uid,
     };
+    
     const assignedUsersList = assignedUsers.map((u) => {
       return {
         displayName: u.value.displayName,
         photoURL: u.value.photoURL,
-        id: u.value.id,
+        // id: u.value.id,
       };
     });
 
@@ -73,15 +74,15 @@ export default function Create() {
       name: name,
       details: details,
       category: category.value,
-     dueDate: Timestamp.fromDate(new Date()),
-      assignedUsersList: assignedUsersList,
+      dueDate: Timestamp.fromDate(new Date()),
+      assignedUsersList,
       createdBy: createdBy,
       comments: [],
     };
 
     await addDocument(post);
     if (!response.error) {
-      console.log(post)
+      console.log(post);
       console.log(response);
       navigate("/");
     }
