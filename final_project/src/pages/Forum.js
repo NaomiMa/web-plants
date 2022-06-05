@@ -14,8 +14,8 @@ export default function Forum() {
     <div>
       <h2 className="page-title">פורום צמחים</h2>
       {error && <p className="error">{error}</p>}
-          {documents && <PostList posts={documents} />}
-          <ForumCard/>
+      {documents && <PostList posts={documents} />}
+      <ForumCard />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import "./PostList.css";
 export default function PostList({ posts }) {
   console.log(posts.createdBy);
   return (
-    <div>
+    <div className="project-list">
       {posts.length === 0 && <p>No posts yet!</p>}
       {posts.map((post) => (
         <Link to={`/posts/${post.id}`} key={post.id}>

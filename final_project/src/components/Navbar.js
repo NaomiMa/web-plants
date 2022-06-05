@@ -39,6 +39,7 @@ export default function Navbar() {
           <Button>
             <Link to="/forum">Forum</Link>
           </Button>
+         
           {user && (
             <>
               {!isPending && (

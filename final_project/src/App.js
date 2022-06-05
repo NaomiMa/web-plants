@@ -9,6 +9,7 @@ import { useLogout } from "./hook/useLogout";
 import { useAuthContext } from "./hook/useAuthContext";
 import OnlineUsers from "./components/OnlineUsers";
 import Forum from "./pages/Forum";
+import Post from "./pages/Post";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -39,8 +40,11 @@ function App() {
                 path="/forum"
                 element={user ? <Forum /> : <Navigate to="/login" />}
               />
+              <Route
+                path="/posts/:id"
+                element={user ? <Post /> : <Navigate to="/login" />}
+              />
             </Routes>
-            <AddPost />
           </BrowserRouter>
         )}
       </header>
