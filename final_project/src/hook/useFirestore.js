@@ -89,7 +89,7 @@ export const useFirestore = (c) => {
     dispatch({ type: "IS_PENDING" });
 
     try {
-      await deleteDoc(doc(ref, { id }));
+      await deleteDoc(doc(ref,  id ));
       dispatchIfNotCancelled({ type: "DELETED_DOCUMENT" });
     } catch (err) {
       dispatchIfNotCancelled({ type: "ERROR", payload: "could not delete" });

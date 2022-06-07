@@ -2,7 +2,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { useState } from "react";
-import TransferList from "./tagsList";
+// import TransferList from "./tagsLit";
 import { Container } from "@mui/material";
 import { useAuthContext } from "../hook/useAuthContext";
 
@@ -70,7 +70,7 @@ export default function AddPost() {
           />
         </label>
         <br /><br/>
-        <TransferList />
+        {/* <TransferList /> */}
         <br />
         <button>הוספה</button>
       </form>

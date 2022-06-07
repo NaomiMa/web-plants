@@ -5,6 +5,7 @@ import PostSummary from "./PostSummary";
 
 // styles
 import "./Post.css";
+import { Container, Grid, Typography } from "@mui/material";
 
 export default function Post() {
   const { id } = useParams();
@@ -19,8 +20,23 @@ export default function Post() {
 
   return (
     <div className="post-details">
-      <PostSummary post={document} />
-      <PostComments post={document} />
+      <Container>
+        <Grid
+          container
+          rowSpacing={3}
+          columnSpacing={{ xs: 2, sm: 4, md: 6 }}
+          justifyContent="space-evenly"
+          alignItems="baseline"
+          wrap="nowrap"
+        >
+          <Grid item xs={6}>
+            <PostSummary post={document} />
+          </Grid>
+          <Grid item xs>
+            <PostComments post={document} />
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }

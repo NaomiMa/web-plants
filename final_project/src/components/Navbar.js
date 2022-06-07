@@ -43,7 +43,7 @@ export default function Navbar() {
           {user && (
             <>
               {!isPending && (
-                <Button className="btn" variant="outlined" onClick={logout}>
+                <Button className="btn" variant="outlined" onClick={logout}>  
                   LOGOUT
                 </Button>
               )}

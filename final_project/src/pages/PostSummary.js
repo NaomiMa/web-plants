@@ -10,7 +10,7 @@ export default function PostSummary({ post }) {
 
   const handleClick = () => {
     deleteDocument(post.id);
-    navigate.push("/");
+    navigate("/");
   };
 
   return (

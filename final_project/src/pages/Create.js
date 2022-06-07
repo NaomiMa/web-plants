@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useCollection } from "../hook/useCollection";
 import { useFirestore } from "../hook/useFirestore";
 import { serverTimestamp, Timestamp } from "firebase/firestore";
+import { ref } from "firebase/database";
+
 import { useAuthContext } from "../hook/useAuthContext.js";
-import { timestamp } from "../firebase/config.js";
+import { db } from "../firebase/config.js";
 import Select from "react-select";
 
 // styles
@@ -22,7 +24,7 @@ export default function Create() {
   const navigate = useNavigate();
   const { addDocument, response } = useFirestore("posts");
   const { user } = useAuthContext();
-  const { documents } = useCollection("users");
+  const { documents } = useCollection("tags");
   const [users, setUsers] = useState([]);
 
   // form field values
@@ -30,18 +32,19 @@ export default function Create() {
   const [details, setDetails] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [category, setCategory] = useState("");
-  const [assignedUsers, setAssignedUsers] = useState([]);
+  const [tags, setTag] = useState([]);
   const [formError, setFormError] = useState(null);
 
   // create user values for react-select
   useEffect(() => {
     if (documents) {
       setUsers(
-        documents.map((user) => {
-          return { value: { ...user, id: user.uid }, label: user.displayName };
+        documents.map((tag) => {
+          return { value: { ...tag, id: tag.uid }, label: tag.tagName };
         })
       );
     }
+    console.log(documents);
   }, [documents]);
 
   const handleSubmit = async (e) => {
@@ -52,7 +55,7 @@ export default function Create() {
       setFormError("יש לבחור נושא");
       return;
     }
-    if (assignedUsers.length < 1) {
+    if (tags.length < 1) {
       setFormError("יש לבחור לפחות תג אחד");
       return;
     }
@@ -61,12 +64,12 @@ export default function Create() {
       photoURL: user.photoURL,
       id: user.uid,
     };
-    
-    const assignedUsersList = assignedUsers.map((u) => {
+
+    const tagsList = tags.map((u) => {
       return {
-        displayName: u.value.displayName,
-        photoURL: u.value.photoURL,
-        // id: u.value.id,
+        tagName: u.value.tagName,
+        tagCategory: u.value.category,
+        // tagId: u.value.uid,
       };
     });
 
@@ -75,7 +78,7 @@ export default function Create() {
       details: details,
       category: category.value,
       dueDate: Timestamp.fromDate(new Date()),
-      assignedUsersList,
+      tagsList,
       createdBy: createdBy,
       comments: [],
     };
@@ -109,7 +112,7 @@ export default function Create() {
             value={details}
           ></textarea>
         </label>
-        <label>
+        {/* <label>
           <span>Set due date:</span>
           <input
             required
@@ -117,7 +120,7 @@ export default function Create() {
             onChange={(e) => setDueDate(e.target.value)}
             value={dueDate}
           />
-        </label>
+        </label> */}
         <label>
           <span>בחר נושא:</span>
           <Select
@@ -128,7 +131,7 @@ export default function Create() {
         <label>
           <span>בחרת תגיות קשורות:</span>
           <Select
-            onChange={(option) => setAssignedUsers(option)}
+            onChange={(option) => setTag(option)}
             options={users}
             isMulti
           />
