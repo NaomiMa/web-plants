@@ -1,9 +1,8 @@
 .navbar {
-  background-color: #6ae789;
+  background-color: hwb(0 95% 4%);
   width: 100%;
-  padding: 20px 0;
+  padding: 15px 0;
   box-sizing: border-box;
-  margin-bottom: 5px;
 }
 .navbar ul {
   display: flex;
@@ -18,12 +17,19 @@
   display: flex;
   align-items: center;
   margin-right: auto;
-  color: rgb(36, 182, 17);
+  color: rgb(0, 0, 0);
 }
 
 .navbar a {
+
   font-weight: bold;
-  color: rgb(36, 182, 17);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   margin-right: 20px;
+}
+.bth{
+  float: left;
+  background-color: #4CAF50; /* Green */
+  color: white;
+
 }

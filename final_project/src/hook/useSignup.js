@@ -36,6 +36,8 @@ export const useSignup = () => {
         online: true,
         displayName,
         photoURL: imgUrl,
+        isAdmin: false,
+        email
       });
 
       // dispatch login action

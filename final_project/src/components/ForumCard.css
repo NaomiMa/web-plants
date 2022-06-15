@@ -1,0 +1,11 @@
+.forum-page {
+  display: flex;
+  justify-content: center;
+  position: static;
+}
+
+.test {
+  width: 10%;
+  padding-left: 80px;
+  padding-right: 0;
+}

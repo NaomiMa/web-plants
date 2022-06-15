@@ -1,0 +1,22 @@
+.quest-page {
+    font-family: rubik;
+    font-size: 20px;
+    padding: 30px;
+
+}
+.h1 {
+    color: rgb(0, 0, 0);
+    font-size: 45px;
+    text-align: center;
+    font-family: rubik;
+    align-items: center;
+    padding: 20px;
+
+}
+
+.button {
+    align-items: left;
+    display: flex;
+    padding: 20px;
+
+}

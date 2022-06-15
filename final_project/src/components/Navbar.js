@@ -22,6 +22,9 @@ export default function Navbar() {
           <Button>
             <Link to="/">Home</Link>
           </Button>
+          <Button>
+            <Link to="/questionnarie">שאלון</Link>
+          </Button>
 
           {!user && (
             <>
@@ -43,7 +46,7 @@ export default function Navbar() {
           {user && (
             <>
               {!isPending && (
-                <Button className="btn" variant="outlined" onClick={logout}>  
+                <Button onClick={logout}>  
                   LOGOUT
                 </Button>
               )}

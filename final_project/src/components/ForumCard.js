@@ -1,5 +1,5 @@
 import Card from "@mui/material/Card";
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -16,6 +16,7 @@ import { Container } from "@mui/material";
 import { useAuthContext } from "../hook/useAuthContext";
 import OnlineUsers from "./OnlineUsers.js";
 import Create from "../pages/Create.js";
+import "./ForumCard.css";
 
 export default function ForumCard() {
   const auth = getAuth();
@@ -23,13 +24,9 @@ export default function ForumCard() {
 
   const res = useAuthContext();
 
- 
-
   return (
-    <div>
-      <Container>
-        <Grid container spacing={8}>
-          <Grid item xs={3} >
+    <div className="forum-page">
+      {/* <Grid item xs={3} >
           <Card>
             
         <CardHeader
@@ -48,16 +45,13 @@ export default function ForumCard() {
         </CardContent>
        
           </Card>
-        </Grid>
-     <Grid container justifyContent="center">
-            <Create />
-        </Grid>
-        <Grid container justifyContent="end"  >
-          <OnlineUsers />
-          </Grid>
-        </Grid>
-      </Container>
+        </Grid> */}
+      <Grid >
+        <Create />
+      </Grid>
+      <Grid className="test">
+        <OnlineUsers />
+      </Grid>
     </div>
-    
   );
 }

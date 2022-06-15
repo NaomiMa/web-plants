@@ -24,7 +24,7 @@ export default function PostList({ posts }) {
           {posts.length === 0 && <p>No posts yet!</p>}
           {posts.map((post) => (
             <Link to={`/posts/${post.id}`} key={post.id}>
-              <Grid item xs={10}>
+              {/* <Grid item xs={10}>
                 <div className="assigned-to">
                   <p>
                     <p>{post.createdBy.displayName}</p>
@@ -36,7 +36,7 @@ export default function PostList({ posts }) {
                   <h3>{post.name}</h3>
                   <h4>{post.details}</h4>
                 </div>
-              </Grid>
+              </Grid> */}
             </Link>
           ))}
         </Grid>

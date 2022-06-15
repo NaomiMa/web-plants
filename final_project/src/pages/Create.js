@@ -92,7 +92,7 @@ export default function Create() {
   };
 
   return (
-    <div className="create-form">
+    <div className="create-form" dir="rtl">
       <h2 className="page-title">שאל שאלה</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -126,7 +126,7 @@ export default function Create() {
           <Select
             onChange={(option) => setCategory(option)}
             options={categories}
-          />{" "}
+          />
         </label>
         <label>
           <span>בחרת תגיות קשורות:</span>
