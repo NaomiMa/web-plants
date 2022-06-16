@@ -21,7 +21,7 @@ export default function BooksList({ plants }) {
 
   return (
     <Container>
-      <Grid container>
+      <Grid container spacing={3}>
         {plants.map((plant) => (
           <Grid item key={plant.id} xs={12} sm={6} md={3}>
             <ul onClick={() => handleClick(plant.id)}>

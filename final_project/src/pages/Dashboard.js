@@ -52,7 +52,7 @@ export default function Dashboard() {
         <h4 className="page-title" >פורום הצמח שלי</h4>
         {error && <p className="error">{error}</p>}
         {documents && <PostFilter changeFilter={changeFilter} />}
-        {/* {posts && <PostList posts={posts} />} */}
+        {posts && <PostList posts={posts} />}
       </Container>
     </div>
   );

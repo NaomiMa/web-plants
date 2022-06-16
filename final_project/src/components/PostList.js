@@ -1,20 +1,32 @@
 // styles
 import { Link } from "react-router-dom";
-import Avatar from "./Avatar";
+
+// import Avatar from "./Avatar";
 import "./PostList.css";
 
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import { Container, Box, Grid } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import CardContent from "@mui/material/CardContent";
+import { Container, IconButton, Grid, Typography, Avatar } from "@mui/material";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useFirestore } from "../hook/useFirestore";
 
 export default function PostList({ posts }) {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
+  const { deleteDocument } = useFirestore("posts");
+
+  const handleClick = () => {
+    deleteDocument(posts.id);
+    // navigate("/");
+  };
+  // const Item = styled(Paper)(({ theme }) => ({
+  //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  //   ...theme.typography.body2,
+  //   padding: theme.spacing(1),
+  //   textAlign: "center",
+  //   color: theme.palette.text.secondary,
+  // }));
 
   console.log(posts.createdBy);
   return (
@@ -24,7 +36,38 @@ export default function PostList({ posts }) {
           {posts.length === 0 && <p>No posts yet!</p>}
           {posts.map((post) => (
             <Link to={`/posts/${post.id}`} key={post.id}>
-              {/* <Grid item xs={10}>
+              <Grid container spacing={3}>
+                <Card elevation={3}>
+                  <CardHeader
+                    avatar={<Avatar src={post.createdBy.photoURL} />}
+                    action={
+                      <IconButton
+                        onClick={handleClick
+                        }
+                      >
+                        <DeleteOutlinedIcon />
+                      </IconButton>
+                    }
+                    title={post.name}
+                    subheader={post.dueDate.toDate().toString()}
+                    //
+                  />
+                  <CardContent>
+                    <Typography>{post.details}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Link>
+          ))}
+        </Grid>
+        {/* </Grid> */}
+      </div>
+    </Container>
+  );
+}
+
+{
+  /* <Grid item xs={10}>
                 <div className="assigned-to">
                   <p>
                     <p>{post.createdBy.displayName}</p>
@@ -36,12 +79,5 @@ export default function PostList({ posts }) {
                   <h3>{post.name}</h3>
                   <h4>{post.details}</h4>
                 </div>
-              </Grid> */}
-            </Link>
-          ))}
-        </Grid>
-        {/* </Grid> */}
-      </div>
-    </Container>
-  );
+              </Grid> */
 }

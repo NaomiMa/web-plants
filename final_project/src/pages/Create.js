@@ -56,10 +56,10 @@ export default function Create() {
       setFormError("יש לבחור נושא");
       return;
     }
-    if (tags.length < 1) {
-      setFormError("יש לבחור לפחות תג אחד");
-      return;
-    }
+    // if (tags.length < 1) {
+    //   setFormError("יש לבחור לפחות תג אחד");
+    //   return;
+    // }
     const createdBy = {
       displayName: user.displayName,
       photoURL: user.photoURL,
@@ -129,14 +129,14 @@ export default function Create() {
             options={categories}
           />
         </label>
-        <label>
+        {/* <label>
           <span>בחרת תגיות קשורות:</span>
           <Select
             onChange={(option) => setTag(option)}
             options={tagsList}
             isMulti
           />
-        </label>
+        </label> */}
 
         <button className="btn">פרסם</button>
         {formError && <p className="error">{formError}</p>}
