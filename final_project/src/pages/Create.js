@@ -11,6 +11,7 @@ import Select from "react-select";
 // styles
 import "./Create.css";
 import { useNavigate } from "react-router-dom";
+import { tagsList } from "../tagsList";
 
 const categories = [
   { value: "questions", label: "שאלות" },
@@ -132,7 +133,7 @@ export default function Create() {
           <span>בחרת תגיות קשורות:</span>
           <Select
             onChange={(option) => setTag(option)}
-            options={users}
+            options={tagsList}
             isMulti
           />
         </label>

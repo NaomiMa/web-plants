@@ -14,6 +14,7 @@ import Questionnaire from "./pages/Questionnaire";
 import Home from "./pages/Home";
 import image from "./image/background.jpg";
 import { Opacity } from "@material-ui/icons";
+import PlantsForm from '../src/components/PlantsForm'
 
 import "./App.css";
 
@@ -27,10 +28,9 @@ function App() {
         style={{
           backgroundImage: "url(" + image + ")",
           width: "100%",
-          height: "100vh",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat",
         }}
       >
         <header className="App-header">
@@ -60,6 +60,10 @@ function App() {
                 <Route
                   path="/posts/:id"
                   element={user ? <Post /> : <Navigate to="/login" />}
+                />
+                 <Route
+                  path="/plants/:plantsForm"
+                  element={user ? <PlantsForm/> : <Navigate to="/login" />}
                 />
                 <Route path="/questionnarie" element={<Questionnaire />} />
               </Routes>

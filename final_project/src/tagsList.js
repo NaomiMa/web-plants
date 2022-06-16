@@ -8,9 +8,10 @@ export const tagsList = {
   type: [
     { value: "0", label: "צמח ביתי" },
     { value: "1", label: "צמח גינה" },
-    { value: "2", label: "צמח תבלין" },
+    { value: "2", label: "צמח תבלין/ רפואי" },
     { value: "3", label: "צמח שולחן/ נוי" },
     { value: "4", label: "צמח מטפס" },
+    { value: "5", label: "צמח אוויר" },
   ],
   treatment: [
     { value: "0", label: "טיפול יומיומי" },
@@ -20,9 +21,9 @@ export const tagsList = {
   ],
   light: [
     { value: "0", label: "שמש ישירה (עד 6 שעות)" },
-    { value: "1", label:  "תאורה מלאה" },
+    { value: "1", label: "תאורה מלאה" },
     { value: "2", label: "תאורה חלקית" },
-    { value: "3", label:  "תאורה מועטה"},
+    { value: "3", label: "תאורה מועטה" },
     { value: "4", label: "ללא אור" },
   ],
   flowers: [
@@ -34,12 +35,12 @@ export const tagsList = {
     { value: "0", label: "צמח ענק" },
     { value: "1", label: "צמח גדול" },
     { value: "2", label: "צמח בינוני" },
-    { value: "3", label: "צמח קטן"},
+    { value: "3", label: "צמח קטן" },
     { value: "4", label: "צמח מזערי" },
   ],
   purpose: [
     { value: "0", label: "צמח לנוי" },
-    { value: "1", label: "צמח תבלין" },
+    { value: "1", label: "צמח תבלין/ רפואי" },
     { value: "2", label: "צמח פרי/ ירק" },
     { value: "3", label: "טיהור אוויר" },
   ],
@@ -47,7 +48,7 @@ export const tagsList = {
     { value: "0", label: "רב שנתי" },
     { value: "1", label: "חורף" },
     { value: "2", label: "סתיו" },
-    { value: "3", label:"אביב" },
+    { value: "3", label: "אביב" },
     { value: "4", label: "קיץ" },
   ],
   experience: [
@@ -57,4 +58,3 @@ export const tagsList = {
     { value: "3", label: "אני מגדל צמחים מקצועי" },
   ],
 };
-
