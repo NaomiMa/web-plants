@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddPost from "./components/AddPost";
-import ForumCard from "./components/ForumCard";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login/Login.js";
 import Plants from "./pages/Plants";
@@ -14,9 +13,11 @@ import Questionnaire from "./pages/Questionnaire";
 import Home from "./pages/Home";
 import image from "./image/background.jpg";
 import { Opacity } from "@material-ui/icons";
-import PlantsForm from '../src/components/PlantsForm'
+import PlantsForm from "../src/components/PlantsForm";
 
 import "./App.css";
+import Results from "./components/Results";
+import Create from "./pages/Create";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
@@ -57,15 +58,24 @@ function App() {
                   path="/forum"
                   element={user ? <Forum /> : <Navigate to="/login" />}
                 />
+                 <Route
+                  path="/forum/:create"
+                  element={user ? <Create /> : <Navigate to="/login" />}
+                />
                 <Route
                   path="/posts/:id"
                   element={user ? <Post /> : <Navigate to="/login" />}
                 />
-                 <Route
+                <Route
                   path="/plants/:plantsForm"
-                  element={user ? <PlantsForm/> : <Navigate to="/login" />}
+                  element={user ? <PlantsForm /> : <Navigate to="/login" />}
                 />
-                <Route path="/questionnarie" element={<Questionnaire />} />
+                <Route
+                  path="/questionnarie"
+                  element={<Questionnaire />} />
+              <Route
+                  path="/questionnarie/:results"
+                  element={<Results />} />
               </Routes>
             </BrowserRouter>
           )}

@@ -9,14 +9,20 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Grid } from "@mui/material";
+import { useCollection } from "../hook/useCollection";
 
 //List of plants collection
-export default function PlantsList({ plants }) {
-  
+export default function Results() {
+    const { documents: plants } = useCollection("plants", ["count"]);
+
+
+    
+
   //Delete plants function from firestore
   const handleClick = async (id) => {
-    const docRef = doc(db, "plants", id);
-    // await deleteDoc(docRef);
+      const docRef = doc(db, "plants", id);
+    
+      
   };
 
   return (

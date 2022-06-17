@@ -8,6 +8,7 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import { Container, IconButton, Grid, Typography, Avatar } from "@mui/material";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
@@ -20,6 +21,8 @@ export default function PostList({ posts }) {
     deleteDocument(posts.id);
     // navigate("/");
   };
+
+  
   // const Item = styled(Paper)(({ theme }) => ({
   //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   //   ...theme.typography.body2,
@@ -55,29 +58,18 @@ export default function PostList({ posts }) {
                   <CardContent>
                     <Typography>{post.details}</Typography>
                   </CardContent>
+                  <CardMedia
+                    component="img"
+                    height="250"
+                    src={post.photoURL}
+                  />
                 </Card>
               </Grid>
             </Link>
           ))}
         </Grid>
-        {/* </Grid> */}
       </div>
     </Container>
   );
 }
 
-{
-  /* <Grid item xs={10}>
-                <div className="assigned-to">
-                  <p>
-                    <p>{post.createdBy.displayName}</p>
-                  </p>
-                  <div className="avatar">
-                    <img src={post.createdBy.photoURL} />
-                  </div>
-                  <p>נכתב בתאריך {post.dueDate.toDate().toDateString()}</p>
-                  <h3>{post.name}</h3>
-                  <h4>{post.details}</h4>
-                </div>
-              </Grid> */
-}

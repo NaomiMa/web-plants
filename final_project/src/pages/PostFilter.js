@@ -19,13 +19,13 @@ export default function PostFilter({ changeFilter }) {
   };
 
   return (
-    <div className="project-filter">
+    <div className="project-filter" dir='rtl'>
       <nav>
-        <p>Filter by: </p>
+        <p>סנן לפי:   </p>
         {filterList.map((f) => (
           <button
             key={f}
-            ck={() => handleClick(f)}
+            onClick={() => handleClick(f)}
             className={currentFilter === f ? "active" : ""}
           >
             {f}

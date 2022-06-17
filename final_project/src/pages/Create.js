@@ -2,16 +2,18 @@ import { useState, useEffect } from "react";
 import { useCollection } from "../hook/useCollection";
 import { useFirestore } from "../hook/useFirestore";
 import { serverTimestamp, Timestamp } from "firebase/firestore";
-import { ref } from "firebase/database";
+import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+
+
 
 import { useAuthContext } from "../hook/useAuthContext.js";
-import { db } from "../firebase/config.js";
+import { db, storage} from "../firebase/config.js";
 import Select from "react-select";
 
 // styles
 import "./Create.css";
-import { useNavigate } from "react-router-dom";
-import { tagsList } from "../tagsList";
+import { Link, useNavigate } from "react-router-dom";
+import { Container } from "@mui/material";
 
 const categories = [
   { value: "questions", label: "שאלות" },
@@ -35,6 +37,10 @@ export default function Create() {
   const [category, setCategory] = useState("");
   const [tags, setTag] = useState([]);
   const [formError, setFormError] = useState(null);
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailError, setThumbnailError] = useState(null);
+
+ 
 
   // create user values for react-select
   useEffect(() => {
@@ -48,6 +54,29 @@ export default function Create() {
     console.log(documents);
   }, [documents]);
 
+  const handleFileChange = (e) => {
+    setThumbnail(null);
+    let selected = e.target.files[0];
+    console.log(selected);
+
+    if (!selected) {
+      setThumbnailError("Please select a file");
+      return;
+    }
+    if (!selected.type.includes("image")) {
+      setThumbnailError("Selected file must be an image");
+      return;
+    }
+    if (selected.size > 1000000) {
+      setThumbnailError("Image file size must be less than 100kb");
+      return;
+    }
+
+    setThumbnailError(null);
+    setThumbnail(selected);
+    console.log("thumbnail updated");
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormError(null);
@@ -60,6 +89,11 @@ export default function Create() {
     //   setFormError("יש לבחור לפחות תג אחד");
     //   return;
     // }
+
+    const uploadPath = `postImage/${thumbnail.name}`;
+    const img = await uploadBytes(ref(storage, uploadPath), thumbnail);
+    const imgUrl = await getDownloadURL(img.ref);
+
     const createdBy = {
       displayName: user.displayName,
       photoURL: user.photoURL,
@@ -82,20 +116,23 @@ export default function Create() {
       tagsList,
       createdBy: createdBy,
       comments: [],
+      photoURL: imgUrl
     };
 
     await addDocument(post);
     if (!response.error) {
       console.log(post);
       console.log(response);
-      navigate("/");
+      navigate("/forum");
     }
   };
 
   return (
-    <div className="create-form" dir="rtl">
-      <h2 className="page-title">שאל שאלה</h2>
-      <form onSubmit={handleSubmit}>
+    <Container>
+      <div className="create-form" dir="rtl">
+        <div className="page-title">
+      <h1 className="h1">שאל שאלה</h1>
+      <form  onSubmit={handleSubmit}>
         <label>
           <span>כותרת:</span>
           <input
@@ -137,10 +174,26 @@ export default function Create() {
             isMulti
           />
         </label> */}
-
-        <button className="btn">פרסם</button>
-        {formError && <p className="error">{formError}</p>}
-      </form>
-    </div>
+    <label>
+            <span>הוספת תמונה:</span>
+            <input
+              label="תמונת פרופיל"
+              type="file"
+              onChange={handleFileChange}
+            />
+            {thumbnailError && <div className="error">{thumbnailError}</div>}
+          </label>
+          <br />
+            <br />
+            
+              <button className="btn">פרסם</button>
+          
+            {formError && <p className="error">{formError}</p>}
+             <br />
+        <br />
+          </form>
+          </div>
+      </div>
+    </Container>
   );
 }

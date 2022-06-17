@@ -1,6 +1,5 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import Video from "../video/video.mp4";
 import image from "../image/Background2.jpg";
 import { Link } from "react-router-dom";
 import "./Home.css";

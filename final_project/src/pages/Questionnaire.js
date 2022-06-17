@@ -2,6 +2,8 @@ import React from "react";
 import { tagsList } from "../tagsList";
 import { useState, useEffect } from "react";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
+
 import { useCollection } from "../hook/useCollection";
 import {
   getDoc,
@@ -21,6 +23,8 @@ import { Button, Container } from "@mui/material";
 import "./Questionnaire.css";
 
 export default function Questionnaire() {
+  const navigate = useNavigate();
+
   const [location, setLocation] = useState([]);
   const [type, setType] = useState([]);
   const [treatment, setTreatment] = useState([]);
@@ -135,8 +139,13 @@ export default function Questionnaire() {
       });
     }
 
+    navigate("/questionnarie/:results")
+
+
     e.preventDefault();
   };
+
+  
 
   return (
     <div>

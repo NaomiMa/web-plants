@@ -205,7 +205,7 @@ export default function PlantForm() {
             ></Select>
           </label>
           <label>
-            <span>תמונת פרופיל:</span>
+            <span>תמונת צמח:</span>
             <input
               required
               label="תמונת פרופיל"
