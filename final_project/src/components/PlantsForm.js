@@ -75,6 +75,7 @@ export default function PlantForm() {
       season: season,
       experience: experience,
       photoURL: imgUrl,
+      
     });
     console.log();
     setNewPlant("");

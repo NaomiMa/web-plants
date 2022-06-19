@@ -66,9 +66,6 @@ export default function Dashboard() {
           </Link>
         </Grid>
         {posts && <PostList posts={posts} />}
-        <Grid>
-          <OnlineUsers />
-        </Grid>
       </Container>
     </div>
   );

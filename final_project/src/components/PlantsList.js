@@ -9,10 +9,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
+
+import Rating from "./Rating";
 
 //List of plants collection
 export default function PlantsList({ plants }) {
-  
   //Delete plants function from firestore
   const handleClick = async (id) => {
     const docRef = doc(db, "plants", id);
@@ -41,7 +43,10 @@ export default function PlantsList({ plants }) {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small">Learn More</Button>
+                    {/* <Rating plants={plant} /> */}
+                    <Link to={`/plants/${plant.id}`} key={plant.id}>
+                      <Button size="small">מידע נוסף</Button>
+                    </Link>
                   </CardActions>
                 </Card>
               </Card>
