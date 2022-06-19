@@ -139,13 +139,10 @@ export default function Questionnaire() {
       });
     }
 
-    navigate("/questionnarie/:results")
-
+    navigate("/questionnarie/:gotoresults");
 
     e.preventDefault();
   };
-
-  
 
   return (
     <div>
@@ -253,9 +250,17 @@ export default function Questionnaire() {
             ></Select>
           </label>
         </div>
-        <Button className="button" onClick={handleClick}>
+        <br />
+        <br />
+        <button className="btn" onClick={handleClick}>
           חפש לי את הצמח המתאים עבורי
-        </Button>
+        </button>
+       
+        <br />
+        <br />
+        <br />
+        <br />
+
       </Container>
     </div>
   );

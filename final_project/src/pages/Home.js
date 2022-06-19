@@ -24,7 +24,8 @@ export default function Home() {
           <br /> אנחנו כאן בצמח שלי החלטנו להוציא שאלון שיעזור לכם לדעת מה הצמח
           שהכי מתאים לכם.
         </h4>
-        <button className="button-home">
+        <br />
+        <button className="btn">
         <Link to="/questionnarie">למעבר לשאלון</Link></button>
       </div>
     </div>

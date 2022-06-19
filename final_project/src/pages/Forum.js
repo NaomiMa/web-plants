@@ -18,7 +18,6 @@ export default function Forum() {
       {error && <p className="error">{error}</p>}
       {documents && <PostList posts={documents} />} */}
 
-      <ForumCard />
     </div>
   );
 }

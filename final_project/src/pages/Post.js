@@ -5,7 +5,7 @@ import PostSummary from "./PostSummary";
 
 // styles
 import "./Post.css";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 export default function Post() {
   const { id } = useParams();
